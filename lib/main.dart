@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: Dashboard(),
+      home: SplashScreen(),
     );
   }
 }
