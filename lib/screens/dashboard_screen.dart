@@ -18,35 +18,37 @@ class _DashboardState extends State<Dashboard> {
   int index = 2;
 
   final screens = [
-    ProfilePage(),
+    const ProfilePage(),
     HomeWorkPage(),
-    HomePage(),
-    ImagePage(),
-    SupportPage(),
+    const HomePage(),
+    const ImagePage(),
+    const SupportPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final items = <Widget>[
       Icon(
         Icons.person,
-        size: 30,
+        size: width >= 600 ? 40 : 30,
       ),
       Icon(
         CupertinoIcons.book_fill,
-        size: 30,
+        size: width >= 600 ? 40 : 30,
       ),
       Icon(
         Icons.home,
-        size: 30,
+        size: width >= 600 ? 40 : 30,
       ),
       Icon(
         Icons.image,
-        size: 30,
+        size: width >= 600 ? 40 : 30,
       ),
       Icon(
         Icons.info_rounded,
-        size: 30,
+        size: width >= 600 ? 40 : 30,
       ),
     ];
 
@@ -59,16 +61,16 @@ class _DashboardState extends State<Dashboard> {
           // backgroundColor: Colors.white,
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
-              iconTheme: IconThemeData(color: Colors.white),
+              iconTheme: const IconThemeData(color: Colors.white),
             ),
             child: CurvedNavigationBar(
               backgroundColor: Colors.transparent,
               // buttonBackgroundColor: Colors.pinkAccent,
-              color: Color.fromARGB(255, 40, 85, 174),
+              color: const Color.fromARGB(255, 40, 85, 174),
               items: items,
               index: 2,
-              height: 60,
-              animationDuration: Duration(milliseconds: 300),
+              height: width >= 600 ? 75 : 60,
+              animationDuration: const Duration(milliseconds: 300),
               animationCurve: Curves.easeInOut,
               onTap: (index) => setState(() => this.index = index),
             ),

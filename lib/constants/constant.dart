@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 //colors used in this app
-Color mainColor1 = Color.fromARGB(255, 114, 146, 207);
-Color mainColor2 = Color.fromARGB(255, 40, 85, 174);
-Color mainColor = Color.fromARGB(255, 40, 85, 174);
+Color mainColor1 = const Color.fromARGB(255, 114, 146, 207);
+Color mainColor2 = const Color.fromARGB(255, 40, 85, 174);
+Color mainColor = const Color.fromARGB(255, 40, 85, 174);
 
 //  gradient: LinearGradient(
 //                 begin: Alignment.centerLeft,
@@ -27,3 +27,12 @@ const Color blackColor = Colors.black;
 const Color greenColor = Colors.green;
 const Color transparentColor = Colors.transparent;
 const Color borderColor = Color.fromARGB(255, 229, 229, 229);
+
+class AdaptiveTextSize {
+  const AdaptiveTextSize();
+
+  getadaptiveTextSize(BuildContext context, dynamic value) {
+    // 720 is medium screen height
+    return (value / 720) * MediaQuery.of(context).size.height;
+  }
+}

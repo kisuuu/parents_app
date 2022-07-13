@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_parent_app/constants/constant.dart';
 import 'package:school_parent_app/dashboardPages/view_more_for_parents.dart';
 import 'package:school_parent_app/dashboardPages/view_more_for_students.dart';
 import 'package:school_parent_app/forParents/about_school.dart';
@@ -13,31 +14,30 @@ import 'package:school_parent_app/forStudentsDashboard/play_quiz.dart';
 import 'package:school_parent_app/forStudentsDashboard/timetable.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final studentAddSection = Container(
-    child: const Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 4,
-      ),
-      child: CircleAvatar(
-        backgroundImage: AssetImage('assets/images/pluswhite.png'),
-        radius: 15.0,
-      ),
+  final studentAddSection = const Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 4,
+    ),
+    child: CircleAvatar(
+      backgroundImage: AssetImage('assets/images/pluswhite.png'),
+      radius: 15.0,
     ),
   );
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBody: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(0.0), // here the desired height
+        preferredSize: const Size.fromHeight(0.0), // here the desired height
         child: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
@@ -107,11 +107,11 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       horizontal: 4,
                                     ),
                                     child: InkWell(
-                                      child: CircleAvatar(
+                                      child: const CircleAvatar(
                                         backgroundImage: AssetImage(
                                             'assets/images/pluswhite.png'),
                                         radius: 15.0,
@@ -137,29 +137,38 @@ class _HomePageState extends State<HomePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            const Text(
+                            Text(
                               "Hi Prasad",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 28.0,
+                                fontSize: width >= 600
+                                    ? const AdaptiveTextSize()
+                                        .getadaptiveTextSize(context, 18)
+                                    : 28,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.left,
                             ),
-                            const Text(
+                            Text(
                               "Mobisoftseo English Primary School",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12.0,
+                                fontSize: width >= 600
+                                    ? const AdaptiveTextSize()
+                                        .getadaptiveTextSize(context, 11)
+                                    : 12,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.left,
                             ),
-                            const Text(
+                            Text(
                               "Class XI-B  |  Roll no: 03",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12.0,
+                                fontSize: width >= 600
+                                    ? const AdaptiveTextSize()
+                                        .getadaptiveTextSize(context, 11)
+                                    : 12,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.left,
@@ -174,20 +183,30 @@ class _HomePageState extends State<HomePage> {
                                   Radius.circular(10),
                                 ),
                               ),
-                              child: const Padding(
+                              child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: 4, horizontal: 5),
+                                  vertical: 4,
+                                  horizontal: width >= 600
+                                      ? const AdaptiveTextSize()
+                                          .getadaptiveTextSize(context, 4)
+                                      : 5,
+                                ),
                                 child: Text(
                                   "2020-2021",
-                                  style: TextStyle(fontSize: 10),
+                                  style: TextStyle(
+                                    fontSize: width >= 600
+                                        ? const AdaptiveTextSize()
+                                            .getadaptiveTextSize(context, 9)
+                                        : 10,
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
                         Column(
-                          children: [
-                            const CircleAvatar(
+                          children: const [
+                            CircleAvatar(
                               backgroundImage:
                                   AssetImage('assets/images/profile_image.png'),
                               radius: 60.0,
@@ -209,55 +228,6 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Container(
-                    // child: Container(
-                    //   decoration: BoxDecoration(
-                    //       border: Border.all(
-                    //         color: Color.fromARGB(255, 232, 226, 226),
-                    //         width: 1, //
-                    //       ),
-                    //       borderRadius: BorderRadius.all(Radius.circular(15))),
-                    //   height: MediaQuery.of(context).size.height * 0.12,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(8.0),
-                    //     child: ListView.builder(
-                    //         scrollDirection: Axis.horizontal,
-                    //         itemCount: categories.length,
-                    //         itemBuilder: (context, index) {
-                    //           return InkWell(
-                    //             onTap: () {},
-                    //             child: Container(
-                    //               child: Column(
-                    //                 mainAxisAlignment:
-                    //                     MainAxisAlignment.spaceAround,
-                    //                 children: [
-                    //                   Container(
-                    //                     // padding: EdgeInsets.all(10),
-                    //                     margin:
-                    //                         EdgeInsets.symmetric(horizontal: 10),
-                    //                     decoration: BoxDecoration(
-                    //                         borderRadius:
-                    //                             BorderRadius.circular(10)),
-                    //                     child: Image.asset(
-                    //                       categories[index]['iconPath'],
-                    //                       height: 50,
-                    //                       width: 50,
-                    //                     ),
-                    //                   ),
-                    //                   Text(
-                    //                     categories[index]['name'],
-                    //                     style: TextStyle(
-                    //                       color: Colors.black,
-                    //                       fontSize: 11,
-                    //                     ),
-                    //                     textAlign: TextAlign.center,
-                    //                   )
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //           );
-                    //         }),
-                    //   ),
-                    // ),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: const Color.fromARGB(255, 232, 226, 226),
@@ -267,7 +237,6 @@ class _HomePageState extends State<HomePage> {
                         Radius.circular(15),
                       ),
                     ),
-
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 15),
@@ -275,8 +244,8 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Padding(
+                            children: const [
+                              Padding(
                                 padding: EdgeInsets.only(left: 8.0),
                                 child: Text("For Students"),
                               ),
@@ -293,9 +262,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   );
                                 },
-                                child: _forStudents(
-                                  tittle: "Play Quiz",
-                                  image: "assets/images/Play_Quiz_blue.png",
+                                child: forParents(
+                                  title: "Play Quiz",
+                                  icon: "assets/images/Play_Quiz_blue.png",
+                                  width: width,
                                 ),
                               ),
                               InkWell(
@@ -306,9 +276,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   );
                                 },
-                                child: _forStudents(
-                                  tittle: "Assignment",
-                                  image: "assets/images/Assignment_blue.png",
+                                child: forParents(
+                                  title: "Assignment",
+                                  icon: "assets/images/Assignment_blue.png",
+                                  width: width,
                                 ),
                               ),
                               InkWell(
@@ -319,9 +290,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   );
                                 },
-                                child: _forStudents(
-                                  tittle: "Time Table",
-                                  image: "assets/images/calendar_blue.png",
+                                child: forParents(
+                                  title: "Time Table",
+                                  icon: "assets/images/calendar_blue.png",
+                                  width: width,
                                 ),
                               ),
                               InkWell(
@@ -333,9 +305,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   );
                                 },
-                                child: _forStudents(
-                                  tittle: "View More",
-                                  image: "assets/images/plus1.png",
+                                child: forParents(
+                                  title: "View More",
+                                  icon: "assets/images/plus1.png",
+                                  width: width,
                                 ),
                               ),
                             ],
@@ -366,8 +339,8 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Row(
-                                children: [
-                                  const Padding(
+                                children: const [
+                                  Padding(
                                     padding: EdgeInsets.only(left: 8.0),
                                     child: Text("For Parents"),
                                   ),
@@ -386,10 +359,11 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
+                                    child: forParents(
                                       icon:
                                           'assets/images/notice_board_blue.png',
                                       title: 'Notice Board',
+                                      width: width,
                                     ),
                                   ),
                                   InkWell(
@@ -401,9 +375,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
+                                    child: forParents(
                                       icon: 'assets/images/askdoubt_blue.png',
                                       title: 'Ask Doubt',
+                                      width: width,
                                     ),
                                   ),
                                   InkWell(
@@ -415,9 +390,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
+                                    child: forParents(
                                       icon: 'assets/images/fees_blue.png',
                                       title: 'School Fees',
+                                      width: width,
                                     ),
                                   ),
                                   InkWell(
@@ -429,10 +405,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
-                                      icon: 'assets/images/leave_blue.png',
-                                      title: 'Leave Application',
-                                    ),
+                                    child: forParents(
+                                        icon: 'assets/images/leave_blue.png',
+                                        title: 'Leave Application',
+                                        width: width),
                                   ),
                                 ],
                               ),
@@ -448,10 +424,11 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
-                                      icon: 'assets/images/conference_blue.png',
-                                      title: 'Event & Program',
-                                    ),
+                                    child: forParents(
+                                        icon:
+                                            'assets/images/conference_blue.png',
+                                        title: 'Event & Program',
+                                        width: width),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -462,10 +439,11 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
-                                      icon: 'assets/images/attendence_blue.png',
-                                      title: 'Attendence',
-                                    ),
+                                    child: forParents(
+                                        icon:
+                                            'assets/images/attendence_blue.png',
+                                        title: 'Attendence',
+                                        width: width),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -476,10 +454,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
-                                      icon: 'assets/images/school_blue.png',
-                                      title: 'About School',
-                                    ),
+                                    child: forParents(
+                                        icon: 'assets/images/school_blue.png',
+                                        title: 'About School',
+                                        width: width),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -490,10 +468,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       );
                                     },
-                                    child: const forParents(
-                                      icon: 'assets/images/plus1.png',
-                                      title: 'View More',
-                                    ),
+                                    child: forParents(
+                                        icon: 'assets/images/plus1.png',
+                                        title: 'View More',
+                                        width: width),
                                   ),
                                 ],
                               ),
@@ -535,9 +513,9 @@ class _HomePageState extends State<HomePage> {
   Future openDialog() => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          insetPadding: EdgeInsets.all(10),
+          insetPadding: const EdgeInsets.all(10),
           // insetPadding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
           content: Stack(
             children: <Widget>[
@@ -549,25 +527,25 @@ class _HomePageState extends State<HomePage> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('GR.No'),
-                      TextField(
+                      const Text('GR.No'),
+                      const TextField(
                         decoration: InputDecoration(hintText: '1245878888'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Text('DOB'),
-                      TextField(
+                      const Text('DOB'),
+                      const TextField(
                         decoration: InputDecoration(hintText: 'DD - MM - YYYY'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Text('School Code'),
-                      TextField(
+                      const Text('School Code'),
+                      const TextField(
                         decoration: InputDecoration(hintText: 'Mobi-1245785'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Center(
@@ -577,21 +555,21 @@ class _HomePageState extends State<HomePage> {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(
+                              primary: const Color.fromARGB(
                                 255,
                                 52,
                                 95,
                                 180,
                               ),
                             ),
-                            child: Text("Add"),
+                            child: const Text("Add"),
                           ),
                         ),
                       ),
                       Center(
                         child: TextButton(
                           onPressed: submit,
-                          child: Text('CANCEL'),
+                          child: const Text('CANCEL'),
                         ),
                       ),
                     ],
@@ -698,25 +676,30 @@ class forParents extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.title,
+    required this.width,
   }) : super(key: key);
 
+  final double width;
   final String icon;
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      width: 70,
+      // color: Colors.amber,
+      height: width >= 600 ? width * 0.16 : 70,
+      width: width >= 600 ? width * 0.16 : 70,
       margin: const EdgeInsets.only(right: 4, left: 4),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            width: 35,
-            height: 35,
-            // color: Colors.amber,
+            width: width >= 600 ? width * 0.07 : 35,
+            height: width >= 600 ? width * 0.07 : 35,
+            // height: 35,
+
             decoration: BoxDecoration(
+              // color: Colors.amber,
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(icon),
@@ -727,8 +710,10 @@ class forParents extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               title,
-              style: const TextStyle(
-                fontSize: 10,
+              style: TextStyle(
+                fontSize: width >= 600
+                    ? const AdaptiveTextSize().getadaptiveTextSize(context, 10)
+                    : 10,
               ),
               textAlign: TextAlign.center,
             ),

@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:school_parent_app/constants/constant.dart';
-import 'package:school_parent_app/dashboardPages/view_more_for_students.dart';
-import 'package:school_parent_app/forParents/ask_douts.dart';
-import 'package:school_parent_app/forParents/event.dart';
-import 'package:school_parent_app/forParents/leave_application.dart';
-import 'package:school_parent_app/forStudentsDashboard/timetable.dart';
-import 'package:school_parent_app/intro_screens.dart/onborading_screen.dart';
-import 'package:school_parent_app/pages/home_page.dart';
-import 'package:school_parent_app/pages/home_work_page.dart';
 import 'package:school_parent_app/screens/dashboard_screen.dart';
-import 'package:school_parent_app/screens/login_screen.dart';
-import 'package:school_parent_app/screens/splash_screen.dart';
-import 'package:school_parent_app/testing.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +25,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: const Dashboard(),
     );
   }
 }

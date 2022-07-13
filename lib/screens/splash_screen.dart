@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           // gradient: LinearGradient(
           //   begin: Alignment.centerLeft,
@@ -93,7 +93,7 @@ class SplashScreen extends StatelessWidget {
                             //       color: Colors.white,
                             //       fontFamily: 'Poppins'),
                             // ),
-                            Container(
+                            SizedBox(
                               height: MediaQuery.of(context).size.height * 0.44,
                               child: AnimatedSplashScreen(
                                 splash: Image.asset(
@@ -116,7 +116,7 @@ class SplashScreen extends StatelessWidget {
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             "Designed by Mobisoftseo Technologies",
                             textAlign: TextAlign.start,
